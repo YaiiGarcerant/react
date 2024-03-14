@@ -14,7 +14,7 @@ export default function Authenticated({ user, header, children }) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
-                            <div className="shrink-0 flex items-center">
+                            <div className="shrink-1 flex items-center">
                                 <Link href="/">
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
@@ -25,6 +25,23 @@ export default function Authenticated({ user, header, children }) {
                                     Dashboard
                                 </NavLink>
                             </div>
+
+
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink href={route('categories.index')} active={route().current('dashboard')}>
+                                    Categories
+                                </NavLink>
+                            </div>
+
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink href={route('categories.index')} active={route().current('dashboard')}>
+                                    Categories
+                                </NavLink>
+                            </div>
+
+
+
+
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
@@ -97,13 +114,22 @@ export default function Authenticated({ user, header, children }) {
                         </ResponsiveNavLink>
                     </div>
 
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('categories.index')} active={route().current('categories.index')}>
+                            Categories
+                        </ResponsiveNavLink>
+                    </div>
+
+
+
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="px-4">
                             <div className="font-medium text-base text-gray-800">{user.name}</div>
                             <div className="font-medium text-sm text-gray-500">{user.email}</div>
                         </div>
 
-                        <div className="mt-3 space-y-1">
+                        <div className="mt-3
+                        ">
                             <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
                             <ResponsiveNavLink method="post" href={route('logout')} as="button">
                                 Log Out
