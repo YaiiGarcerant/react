@@ -4,6 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TypesController;
+use App\Http\Controllers\MetasController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +31,43 @@ Route::get('/', function () {
     ]);
 });
 
+
+
+Route::resource('/categories', CategoryController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
+
+Route::resource('/types', TypesController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
+Route::resource('/projects', ProjectController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
+
+Route::resource('/metas', MetasController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
+
+Route::resource('/calendar', CalendarController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
+Route::resource('/task', TaskController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -35,4 +78,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
