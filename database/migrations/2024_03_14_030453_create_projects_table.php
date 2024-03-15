@@ -20,12 +20,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->date('estado');
-
-            $table->foreignId('category_id')
-            ->constrained('categories')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-
+            $table->foreignId('categoria_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

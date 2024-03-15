@@ -16,6 +16,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Category::class);
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function metas()
+    {
+        return $this->hasMany(Metas::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *
