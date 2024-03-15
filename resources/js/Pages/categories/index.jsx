@@ -3,12 +3,10 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
-import { useEffect } from "react";
 import Swal from "sweetalert2";
+import Category from "@/Components/Category";
 
-
-
-const index = ({ auth }) => {
+const index = ({ auth, categories }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
         name: "",
         descripcion: "",
@@ -23,15 +21,16 @@ const index = ({ auth }) => {
         });
     };
 
-    const alert=()=>{
+    const alert = () => {
         Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Your work has been saved",
             showConfirmButton: false,
-            timer: 1500
-          });
-    }
+            timer: 1500,
+        });
+    };
+
     return (
         <div>
             <AuthenticatedLayout
@@ -46,9 +45,7 @@ const index = ({ auth }) => {
                     <div className=" sm:px-6 lg:px-8">
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                                <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                                    
-                                </h2>
+                                <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"></h2>
                             </div>
 
                             <Head title="Categories" />
@@ -71,7 +68,10 @@ const index = ({ auth }) => {
                                     <textarea
                                         value={data.descripcion}
                                         onChange={(e) =>
-                                            setData("descripcion", e.target.value)
+                                            setData(
+                                                "descripcion",
+                                                e.target.value
+                                            )
                                         }
                                         placeholder="Body"
                                         className=" mt-6 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -90,7 +90,22 @@ const index = ({ auth }) => {
                                         </PrimaryButton>
                                     </div>
                                 </form>
+
                             </div>
+                        </div>
+                        {/* mostrar */}
+
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-6 pb-6">
+                        <div className="  mt-8 bg-indigo-400 shadow-lg rounded-lg divide-y-8 ">
+                                {
+
+                                    categories?.map(category=>
+                                        <Category
+                                        key={category.id} category={category}
+                                        />
+
+                                )}
+                                </div>
                         </div>
                     </div>
                 </div>
