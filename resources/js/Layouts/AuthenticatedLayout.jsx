@@ -106,21 +106,6 @@ export default function Authenticated({ user, header, children }) {
                                                     </ResponsiveNavLink>
                                                 </div>
                                             </Dropdown.Link>
-
-                                            <Dropdown.Link>
-                                                <div className="">
-                                                    <ResponsiveNavLink
-                                                        href={route(
-                                                            "calendar.index"
-                                                        )}
-                                                        active={route().current(
-                                                            "calendar.index"
-                                                        )}
-                                                    >
-                                                        Calendar
-                                                    </ResponsiveNavLink>
-                                                </div>
-                                            </Dropdown.Link>
                                         </Dropdown.Content>
                                     </Dropdown>
                                 </div>
@@ -266,14 +251,6 @@ export default function Authenticated({ user, header, children }) {
                         </ResponsiveNavLink>
                     </div>
 
-                    <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
-                            href={route("calendar.index")}
-                            active={route().current("calendar.index")}
-                        >
-                            Calendar
-                        </ResponsiveNavLink>
-                    </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
                         <div className="px-4">

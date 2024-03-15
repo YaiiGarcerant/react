@@ -3,6 +3,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
+import Swal from "sweetalert2";
+
 
 const index = ({ auth }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
@@ -21,6 +23,20 @@ const index = ({ auth }) => {
             onSuccess: () => reset(),
         });
     };
+
+
+    const alert=()=>{
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    };
+
+
+
     return (
         <div>
             <AuthenticatedLayout
