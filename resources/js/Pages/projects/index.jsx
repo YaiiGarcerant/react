@@ -6,12 +6,18 @@ import { useForm, Head } from "@inertiajs/react";
 
 const index = ({ auth }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
-        title: "",
+        name: "",
         body: "",
+        url: "",
+        image: "",
+        start_date: "",
+        end_date: "",
+        estado: "",
+
     });
     const submit = (e) => {
         e.preventDefault();
-        post(route("categories.store"), {
+        post(route("projects.store"), {
             onSuccess: () => reset(),
         });
     };

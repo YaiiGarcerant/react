@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\TypesController;
 use App\Http\Controllers\MetasController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,12 +42,6 @@ Route::resource('/projects', ProjectController::class)
 ;
 
 
-Route::resource('/types', TypesController::class)
-    ->only('index', 'store', 'update', 'delete')
-    ->middleware(['auth'])
-;
-
-
 
 
 Route::resource('/metas', MetasController::class)
@@ -58,10 +50,7 @@ Route::resource('/metas', MetasController::class)
 ;
 
 
-Route::resource('/calendar', CalendarController::class)
-    ->only('index', 'store', 'update', 'delete')
-    ->middleware(['auth'])
-;
+
 
 Route::resource('/task', TaskController::class)
     ->only('index', 'store', 'update', 'delete')
