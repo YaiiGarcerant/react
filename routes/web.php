@@ -38,16 +38,18 @@ Route::resource('/categories', CategoryController::class)
     ->middleware(['auth'])
 ;
 
+Route::resource('/projects', ProjectController::class)
+    ->only('index', 'store', 'update', 'delete')
+    ->middleware(['auth'])
+;
+
 
 Route::resource('/types', TypesController::class)
     ->only('index', 'store', 'update', 'delete')
     ->middleware(['auth'])
 ;
 
-Route::resource('/projects', ProjectController::class)
-    ->only('index', 'store', 'update', 'delete')
-    ->middleware(['auth'])
-;
+
 
 
 Route::resource('/metas', MetasController::class)
