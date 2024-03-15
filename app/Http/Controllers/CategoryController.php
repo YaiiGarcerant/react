@@ -11,7 +11,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return Inertia::render('categories/index', []);
+        return Inertia::render('categories/index', [
+            'category' => Category::with('user:id,name')->latest()->get(),
+        ]);
     }
     public function store(Request $request)
     {
@@ -25,9 +27,9 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('success', 'Categoria Creada Exitosamente');
     }
-    public function update(Request $request, Category $category)
-    {
-    }
+    public function update(Request $request, Category $category){
+
+        }
 
     public function destroy(Category $category)
     {
