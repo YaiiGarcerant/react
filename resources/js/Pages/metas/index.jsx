@@ -11,6 +11,7 @@ const index = ({ auth }) => {
     });
     const submit = (e) => {
         e.preventDefault();
+        console.log(data)
         post(route("categories.store"), {
             onSuccess: () => reset(),
         });

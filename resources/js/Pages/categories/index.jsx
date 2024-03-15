@@ -3,18 +3,35 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+
+
 
 const index = ({ auth }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
-        title: "",
-        body: "",
+        name: "",
+        descripcion: "",
     });
     const submit = (e) => {
         e.preventDefault();
         post(route("categories.store"), {
-            onSuccess: () => reset(),
+            onSuccess: () => {
+                reset();
+                alert();
+            },
         });
     };
+
+    const alert=()=>{
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
     return (
         <div>
             <AuthenticatedLayout
@@ -30,7 +47,7 @@ const index = ({ auth }) => {
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                                 <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                                    Sign in to your account
+                                    
                                 </h2>
                             </div>
 
@@ -38,9 +55,9 @@ const index = ({ auth }) => {
                             <div className="max-w-2x1 mx-auto p-4 sm:p-6 lg:p-8">
                                 <form onSubmit={submit}>
                                     <input
-                                        value={data.title}
+                                        value={data.name}
                                         onChange={(e) =>
-                                            setData("title", e.target.value)
+                                            setData("name", e.target.value)
                                         }
                                         type="text"
                                         placeholder="Title"
@@ -48,19 +65,19 @@ const index = ({ auth }) => {
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                     <InputError
-                                        message={errors.title}
+                                        message={errors.name}
                                         className="mt-2"
                                     />
                                     <textarea
-                                        value={data.body}
+                                        value={data.descripcion}
                                         onChange={(e) =>
-                                            setData("body", e.target.value)
+                                            setData("descripcion", e.target.value)
                                         }
                                         placeholder="Body"
                                         className=" mt-6 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                     <InputError
-                                        message={errors.body}
+                                        message={errors.descripcion}
                                         className="mt-2"
                                     />
 
