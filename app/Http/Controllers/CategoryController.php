@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         return Inertia::render('categories/index', [
-            'category' => Category::with('user:id,name')->latest()->get(),
+            'categories' => Category::with('user:id,name')->latest()->get(),
         ]);
     }
     public function store(Request $request)
