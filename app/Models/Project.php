@@ -21,7 +21,6 @@ class Project extends Model
         'image',
         'start_date',
         'end_date',
-        'estado',
-        'category_id',
+        'categories_id',
     ];
 }

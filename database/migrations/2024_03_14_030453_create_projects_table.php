@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('image');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('estado');
             $table->foreignId('categories_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
