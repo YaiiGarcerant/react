@@ -47,6 +47,10 @@ class Categorypolicy
     public function delete(User $user, Category $category): bool
     {
         //
+        return $category->user()->is($user);
+        //OTRA FORMA DE HACERLO
+        //return $this->update($user,$category);
+        //esta llama lo mismo que el metodo ya definido en update 
     }
 
     /**

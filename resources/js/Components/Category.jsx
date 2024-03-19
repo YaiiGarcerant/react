@@ -61,6 +61,14 @@ const Category = ({ category }) => {
                                 >
                                     editar
                                 </button>
+                                <Dropdown.Link
+                                as="button"
+                                href={route("categories.destroy", category.id)}
+                                method="delete"
+                                >
+                                    delete
+                                </Dropdown.Link>
+
                             </Dropdown.Content>
                         </Dropdown>
                     }

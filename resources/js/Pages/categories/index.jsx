@@ -95,7 +95,7 @@ const index = ({ auth, categories }) => {
                         </div>
                         {/* mostrar */}
 
-                        <div className="bg-white overflow-hidden shadow-sm rounded-lg mt-6 p-8 pb-6">
+                        <div className="bg-white overflow-hidden shadow-sm rounded-lg mt-6 p-8 ">
                             <div className="  mt-6 bg-indigo-400 shadow-sm rounded-lg divide-y-8  ">
                                 {
 
