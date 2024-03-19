@@ -95,8 +95,8 @@ const index = ({ auth, categories }) => {
                         </div>
                         {/* mostrar */}
 
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-6 pb-6">
-                        <div className="  mt-8 bg-indigo-400 shadow-lg rounded-lg divide-y-8 ">
+                        <div className="bg-white overflow-hidden shadow-sm rounded-lg mt-6 p-8 pb-6">
+                            <div className="  mt-6 bg-indigo-400 shadow-sm rounded-lg divide-y-8  ">
                                 {
 
                                     categories?.map(category=>
@@ -105,7 +105,7 @@ const index = ({ auth, categories }) => {
                                         />
 
                                 )}
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

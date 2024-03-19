@@ -27,7 +27,15 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('success', 'Categoria Creada Exitosamente');
     }
-    public function update(Request $request, Category $category){
+    public function update(Request $request, Category $category)
+    {
+        $this->authorize('update',$category);
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'descripcion' => 'required|string',
+        ]);
+        $category->update($validated);
+        return redirect(route('categories.index'));
 
         }
 
