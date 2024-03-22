@@ -26,7 +26,7 @@ class TaskController extends Controller
 
         $request->user()->tasks()->create($validated);
 
-        return redirect()->route('task.index')->with('success', 'Categoria Creada Exitosamente');
+        return redirect()->route('task.index')->with('success', 'Tarea Creada Exitosamente');
 
     }
 
