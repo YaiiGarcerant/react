@@ -35,10 +35,14 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task)
     {
+        // $this->authorize('update',$task);
     }
 
 
     public function destroy(Task $task)
     {
+        $this->authorize('delete',$task);
+        $task->delete();
+        return redirect(route('task.index'));
     }
 }

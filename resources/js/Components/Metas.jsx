@@ -9,12 +9,12 @@ import Swal from "sweetalert2";
 
 dayjs.extend(relativeTime);
 
-const Category = ({ category }) => {
+const Meta = ({ meta }) => {
     const { auth } = usePage().props;
     const [editing, setEditing] = useState(false);
     const { data, setData, patch, processing, reset, errors } = useForm({
-        name: category.name,
-        descripcion: category.descripcion,
+        name: meta.name,
+        descripcion: meta.descripcion,
     });
     const alert = () => {
         Swal.fire({
@@ -27,7 +27,7 @@ const Category = ({ category }) => {
     };
     const submit = (e) => {
         e.preventDefault();
-        patch(route("metas.update", category.id), {
+        patch(route("metas.update", meta.id), {
             onSuccess: () => {
                 setEditing(false);
                 alert();
@@ -45,21 +45,21 @@ const Category = ({ category }) => {
                     <div className="flex justify-between items-center">
                         <div>
                             <span className="text-gray-800">
-                                {category.user.name}
+                                {meta.user.name}
                             </span>
                             <small className="ml-2 text-sm text-gray-600">
-                                {dayjs(category.created_at).fromNow()}
+                                {dayjs(meta.created_at).fromNow()}
                             </small>
-                            {category.created_at !== category.updated_at && (
+                            {meta.created_at !== meta.updated_at && (
                                 <small className="text-sm text-gray-600">
                                     &middot; edited
                                 </small>
                             )}
-                            {category.created_at !== category.updated_at && (
+                            {meta.created_at !== meta.updated_at && (
                                 <small className="text-sm text-gray-600"></small>
                             )}
                         </div>
-                        {category.user.id === auth.user.id && (
+                        {meta.user.id === auth.user.id && (
                             <Dropdown>
                                 <Dropdown.Trigger>
                                     <button>
@@ -77,7 +77,7 @@ const Category = ({ category }) => {
                                         as="button"
                                         href={route(
                                             "metas.destroy",
-                                            category.id
+                                            meta.id
                                         )}
                                         method="delete"
                                     >
@@ -91,7 +91,7 @@ const Category = ({ category }) => {
                         {editing ? (
                             <form onSubmit={submit}>
                                 <input
-                                    placeholder={category.name}
+                                    placeholder={meta.name}
                                     onChange={(e) =>
                                         setData("name", e.target.value)
                                     }
@@ -100,7 +100,7 @@ const Category = ({ category }) => {
                                     autoFocus
                                 />
                                 <textarea
-                                    placeholder={category.descripcion}
+                                    placeholder={meta.descripcion}
                                     onChange={(e) =>
                                         setData("descripcion", e.target.value)
                                     }
@@ -127,10 +127,13 @@ const Category = ({ category }) => {
                         ) : (
                             <>
                                 <p className="mt-4 text-2xl font-bold text-gray-800">
-                                    {category.name}
+                                    {meta.name}
+                                </p>
+                                <p className="mt-4  text-gray-800">
+                                    {meta.start_date}
                                 </p>
                                 <p className="mt-4 text-lg text-gray-800">
-                                    {category.descripcion}
+                                    {meta.end_date}
                                 </p>
                             </>
                         )}
@@ -141,4 +144,4 @@ const Category = ({ category }) => {
     );
 };
 
-export default Category;
+export default Meta;

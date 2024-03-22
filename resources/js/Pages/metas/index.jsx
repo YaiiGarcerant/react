@@ -3,8 +3,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head } from "@inertiajs/react";
+import Meta from "@/Components/Metas";
 import Swal from "sweetalert2";
-const index = ({ auth }) => {
+const index = ({ auth,metas }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
         title: "",
         start_date: "",
@@ -122,6 +123,13 @@ const index = ({ auth }) => {
                                     </div>
                                 </form>
                             </div>
+                        </div>
+                        <div className="w-full flex flex-col mt-10 sm:flex-row sm:flex-wrap justify-center">
+                            {
+                            metas?.map(meta =>
+                                <Meta
+                                key={meta.id} meta={meta} />
+                            )}
                         </div>
                     </div>
                 </div>
