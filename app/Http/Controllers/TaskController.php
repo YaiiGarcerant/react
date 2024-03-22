@@ -35,7 +35,7 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task)
     {
-        $this->authorize('update',$task);
+        // $this->authorize('update',$task);
     }
 
 

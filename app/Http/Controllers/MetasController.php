@@ -36,10 +36,11 @@ class MetasController extends Controller
         $this->authorize('update',$metas);
     }
 
-    public function destroy(Metas $metas)
+    public function destroy(Metas $meta)
     {
-        $this->authorize('delete',$metas);
-        $metas->delete();
+        // return response()->json($meta);
+        $this->authorize('delete',$meta);
+        $meta->delete();
         return redirect(route('metas.index'));
     }
 }
