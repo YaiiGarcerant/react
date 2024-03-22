@@ -90,18 +90,15 @@ const index = ({ auth, categories }) => {
                         </div>
                         {/* mostrar */}
 
-                        <div className="bg-white overflow-hidden shadow-sm rounded-lg mt-6 p-8 ">
-                            <div className="  mt-6 bg-indigo-400 shadow-sm rounded-lg divide-y-8  ">
+                            <div className="w-full flex flex-col mt-10 sm:flex-row sm:flex-wrap justify-center">
                                 {
-
                                     categories?.map(category=>
                                         <Category
                                         key={category.id} category={category}
                                         />
-
                                 )}
                             </div>
-                        </div>
+
                     </div>
                 </div>
             </AuthenticatedLayout>

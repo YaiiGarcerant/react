@@ -25,6 +25,8 @@ const Category = ({ category }) => {
             timer: 1000,
         });
     };
+
+
     const submit = (e) => {
         e.preventDefault();
         patch(route("categories.update", category.id), {
@@ -36,7 +38,7 @@ const Category = ({ category }) => {
     };
 
     return (
-            <div className="p-5 flex space-x-2 mx-6  bg-indigo-400 shadow-sm rounded-lg divide-y-8 mt-5 w-80">
+            <div className="p-5 flex space-x-2 mx-6  bg-indigo-400 shadow-sm rounded-lg divide-y-8 mt-5 w-85">
                 <div className=" flex-row grid grid-cols-1 gap-4 place-items-start">
                     <img src="puntos.svg" alt="" />
                 </div>
