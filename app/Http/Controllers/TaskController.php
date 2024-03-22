@@ -29,19 +29,30 @@ class TaskController extends Controller
         $request->user()->tasks()->create($validated);
 
         return redirect()->route('task.index')->with('success', 'Tarea Creada Exitosamente');
-
     }
 
 
     public function update(Request $request, Task $task)
     {
-        // $this->authorize('update',$task);
+        $this->authorize('update', $task);
+        //validamos los datos
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'start_date' => 'required|string',
+            'end_date' => 'required|string',
+        ]);
+
+        $task->update($validated);
+        return redirect(route('task.index'));
+
+
     }
 
 
     public function destroy(Task $task)
     {
-        $this->authorize('delete',$task);
+        $this->authorize('delete', $task);
         $task->delete();
         return redirect(route('task.index'));
     }
