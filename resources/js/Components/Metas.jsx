@@ -13,8 +13,9 @@ const Meta = ({ meta }) => {
     const { auth } = usePage().props;
     const [editing, setEditing] = useState(false);
     const { data, setData, patch, processing, reset, errors } = useForm({
-        name: meta.name,
-        descripcion: meta.descripcion,
+        title: meta.name,
+        start_date: meta.start_date,
+        end_date: meta.end_date,
     });
     const alert = () => {
         Swal.fire({
@@ -27,6 +28,7 @@ const Meta = ({ meta }) => {
     };
     const submit = (e) => {
         e.preventDefault();
+        console.log(data);
         patch(route("metas.update", meta.id), {
             onSuccess: () => {
                 setEditing(false);
@@ -91,25 +93,36 @@ const Meta = ({ meta }) => {
                         {editing ? (
                             <form onSubmit={submit}>
                                 <input
-                                    placeholder={meta.name}
+                                    placeholder={meta.title}
                                     onChange={(e) =>
-                                        setData("name", e.target.value)
+                                        setData("title", e.target.value)
                                     }
                                     type="text"
                                     className="mt-4  mb-3 block w-full border-gray-300cfocus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                     autoFocus
                                 />
-                                <textarea
-                                    placeholder={meta.descripcion}
+                                <input
+                                    placeholder={meta.start_date}
                                     onChange={(e) =>
-                                        setData("descripcion", e.target.value)
+                                        setData("start_date", e.target.value)
                                     }
-                                    className=" mt-4  w-full text-gray-900 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                                ></textarea>
+                                    type="date"
+                                    className="mt-4  mb-3 block w-full border-gray-300cfocus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                    autoFocus
+                                />
+                                <input
+                                    placeholder={meta.end_date}
+                                    onChange={(e) =>
+                                        setData("end_date", e.target.value)
+                                    }
+                                    type="date"
+                                    className="mt-4  mb-3 block w-full border-gray-300cfocus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                ></input>
                                 <InputError
                                     message={errors.message}
                                     className="mt-2"
                                 />
+
                                 <div className="space-x-2">
                                     <PrimaryButton className="mt-4">
                                         save
@@ -127,7 +140,7 @@ const Meta = ({ meta }) => {
                         ) : (
                             <>
                                 <p className="mt-4 text-2xl font-bold text-gray-800">
-                                    {meta.name}
+                                    {meta.title}
                                 </p>
                                 <p className="mt-4  text-gray-800">
                                     {meta.start_date}

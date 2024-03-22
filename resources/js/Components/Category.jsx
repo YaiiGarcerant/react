@@ -27,6 +27,7 @@ const Category = ({ category }) => {
     };
     const submit = (e) => {
         e.preventDefault();
+        
         patch(route("categories.update", category.id), {
             onSuccess: () => {
                 setEditing(false);

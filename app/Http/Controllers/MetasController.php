@@ -31,9 +31,17 @@ class MetasController extends Controller
 
         return redirect()->route('metas.index')->with('success', 'Meta Creada Exitosamente');
     }
-    public function update(Request $request, Metas $metas)
+    public function update(Request $request, Metas $meta)
     {
-        $this->authorize('update',$metas);
+        //  return response()->json($meta);
+      $this->authorize('update',$meta);
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'start_date' => 'required|string',
+            'end_date' => 'required|string',
+        ]);
+        $meta->update($validated);
+        return redirect(route('metas.index'));
     }
 
     public function destroy(Metas $meta)
