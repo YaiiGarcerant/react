@@ -31,11 +31,15 @@ class MetasController extends Controller
 
         return redirect()->route('metas.index')->with('success', 'Meta Creada Exitosamente');
     }
-    public function update(Request $request, Metas $calendar)
+    public function update(Request $request, Metas $metas)
     {
+        $this->authorize('update',$metas);
     }
 
-    public function destroy(Metas $calendar)
+    public function destroy(Metas $metas)
     {
+        $this->authorize('delete',$metas);
+        $metas->delete();
+        return redirect(route('metas.index'));
     }
 }
