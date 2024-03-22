@@ -43,7 +43,7 @@ const index = ({ auth, projects }) => {
             <AuthenticatedLayout user={auth.user}>
                 <div className="py-12">
                     <div className="sm:px-6 lg:px-8">
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg h-full max-h-80">
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                                 <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                                     Projects
@@ -51,7 +51,7 @@ const index = ({ auth, projects }) => {
                             </div>
 
                             <Head title="Categories" />
-                            <div className="grid grid-rows-4 grid-flow-col gap-4 p-4 sm:p-6 lg:p-8">
+                            <div className="grid grid-flow-col gap-4 p-4 sm:p-6 lg:p-8">
                                 <form
                                     onSubmit={submit}
                                     className="sm:grid sm:grid-cols-2 sm:gap-4"
@@ -211,7 +211,7 @@ const index = ({ auth, projects }) => {
                                     </div>
                                     <div className="sm:col-span-2">
                                         <PrimaryButton
-                                            className=" flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            className="mt-8 flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                             disabled={processing}
                                         >
                                             Create

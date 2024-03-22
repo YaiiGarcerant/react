@@ -63,10 +63,11 @@ class ProjectController extends Controller
             'image' => 'required|string',
             'start_date' => 'required|string',
             'end_date' => 'required|string',
-            'categories_id' => 'required',
+
         ]);
+        // return response()->json($validated);
         $project->update($validated);
-        return redirect(route('project.index'));
+        return redirect(route('projects.index'));
 
     }
 
