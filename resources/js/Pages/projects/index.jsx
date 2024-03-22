@@ -222,9 +222,11 @@ const index = ({ auth, projects }) => {
                         </div>
 
                         <div className="w-full flex flex-col mt-10 sm:flex-row sm:flex-wrap justify-center">
-                            {projects?.map((project) => (
-                                <Project key={project.id} project={project} />
-                            ))}
+                            {
+                            projects?.map(project =>
+                                <Project
+                                key={project.id} project={project} />
+                            )}
                         </div>
                     </div>
                 </div>

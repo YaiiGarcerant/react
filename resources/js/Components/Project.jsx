@@ -15,6 +15,11 @@ const Project = ({ project }) => {
     const { data, setData, patch, processing, reset, errors } = useForm({
         name: project.name,
         descripcion: project.descripcion,
+        url: project.url,
+        image: project.image,
+        start_date: project.start_date,
+        end_date: project.end_date,
+        categories_id: project.categories_id,
     });
     const alert = () => {
         Swal.fire({
@@ -25,8 +30,6 @@ const Project = ({ project }) => {
             timer: 1000,
         });
     };
-
-
     const submit = (e) => {
         e.preventDefault();
         patch(route("categories.update", project.id), {
@@ -46,9 +49,9 @@ const Project = ({ project }) => {
                 <div className="flex-1 border-none">
                     <div className="flex justify-between items-center">
                         <div>
-                            <span className="text-gray-800">
+                            {/* <span className="text-gray-800">
                                 {project.user.name}
-                            </span>
+                            </span> */}
                             <small className="ml-2 text-sm text-gray-600">
                                 {dayjs(project.created_at).fromNow()}
                             </small>
@@ -61,7 +64,6 @@ const Project = ({ project }) => {
                                 <small className="text-sm text-gray-600"></small>
                             )}
                         </div>
-                        {project.user.id === auth.user.id && (
                             <Dropdown>
                                 <Dropdown.Trigger>
                                     <button>
@@ -87,7 +89,7 @@ const Project = ({ project }) => {
                                     </Dropdown.Link>
                                 </Dropdown.Content>
                             </Dropdown>
-                        )}
+
                     </div>
                     <div>
                         {editing ? (
@@ -96,6 +98,15 @@ const Project = ({ project }) => {
                                     placeholder={project.name}
                                     onChange={(e) =>
                                         setData("name", e.target.value)
+                                    }
+                                    type="text"
+                                    className="mt-4  mb-3 block w-full border-gray-300cfocus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                    autoFocus
+                                />
+                                <input
+                                    placeholder={project.url}
+                                    onChange={(e) =>
+                                        setData("url", e.target.value)
                                     }
                                     type="text"
                                     className="mt-4  mb-3 block w-full border-gray-300cfocus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"

@@ -55,6 +55,18 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
+        // $this->authorize('update',$project);
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'descripcion' => 'required|string',
+            'url' => 'required',
+            'image' => 'required|string',
+            'start_date' => 'required|string',
+            'end_date' => 'required|string',
+            'categories_id' => 'required',
+        ]);
+        $project->update($validated);
+        return redirect(route('project.index'));
 
     }
 
