@@ -43,15 +43,10 @@ const index = ({ auth }) => {
         <div>
             <AuthenticatedLayout
                 user={auth.user}
-                header={
-                    <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Projects
-                    </h2>
-                }
             >
                 <div className="py-12">
                     <div className="sm:px-6 lg:px-8">
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg h-full max-h-80" >
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                                 <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                                     Projects
@@ -219,7 +214,7 @@ const index = ({ auth }) => {
                                     </div>
                                     <div className="sm:col-span-2">
                                         <PrimaryButton
-                                            className="mt-4 flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                            className=" flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                             disabled={processing}
                                         >
                                             Create

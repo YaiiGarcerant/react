@@ -35,17 +35,12 @@ const index = ({ auth, categories }) => {
         <div>
             <AuthenticatedLayout
                 user={auth.user}
-                header={
-                    <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                        Categories
-                    </h2>
-                }
             >
                 <div className="py-12">
                     <div className=" sm:px-6 lg:px-8">
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                                <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"></h2>
+                                <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Categorias</h2>
                             </div>
 
                             <Head title="Categories" />

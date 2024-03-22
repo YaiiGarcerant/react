@@ -18,14 +18,7 @@ const index = ({ auth }) => {
     };
     return (
         <div>
-            <AuthenticatedLayout
-                user={auth.user}
-                header={
-                    <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                         Metas
-                    </h2>
-                }
-            >
+            <AuthenticatedLayout user={auth.user}>
                 <div className="py-12">
                     <div className=" sm:px-6 lg:px-8">
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
