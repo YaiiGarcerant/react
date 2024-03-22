@@ -21,7 +21,7 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('login', [
+    return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
