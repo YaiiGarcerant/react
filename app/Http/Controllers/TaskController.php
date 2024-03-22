@@ -11,7 +11,9 @@ class TaskController extends Controller
 
     public function index()
     {
-        return Inertia::render('tasks/index', []);
+        return Inertia::render('tasks/index', [
+            'takss' => Task::with('user:id,name')->latest()->get(),
+        ]);
     }
 
     public function store(Request $request)
