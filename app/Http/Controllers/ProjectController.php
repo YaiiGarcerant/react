@@ -15,9 +15,11 @@ class ProjectController extends Controller
 
         $categories = Category::get();
 
-
-        return Inertia::render('projects/index',[
+        return Inertia::render('projects/index', [
             'categories' => $categories,
+            'projects' => Project::with(['categories' => function ($query) {
+                $query->select('id', 'name as categoria');
+            }])->latest()->get(),
         ]);
     }
 

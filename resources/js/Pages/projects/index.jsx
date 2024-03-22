@@ -4,8 +4,8 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, Head, usePage } from "@inertiajs/react";
 import Swal from "sweetalert2";
-
-const index = ({ auth }) => {
+import Project from "@/Components/Project";
+const index = ({ auth, projects }) => {
     const { data, setData, post, processing, reset, errors } = useForm({
         name: "",
         descripcion: "",
@@ -17,7 +17,6 @@ const index = ({ auth }) => {
     });
 
     const { categories } = usePage().props;
-
     const submit = (e) => {
         e.preventDefault();
         console.log(data);
@@ -41,12 +40,10 @@ const index = ({ auth }) => {
 
     return (
         <div>
-            <AuthenticatedLayout
-                user={auth.user}
-            >
+            <AuthenticatedLayout user={auth.user}>
                 <div className="py-12">
                     <div className="sm:px-6 lg:px-8">
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg h-full max-h-80" >
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg h-full max-h-80">
                             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                                 <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                                     Projects
@@ -222,6 +219,12 @@ const index = ({ auth }) => {
                                     </div>
                                 </form>
                             </div>
+                        </div>
+
+                        <div className="w-full flex flex-col mt-10 sm:flex-row sm:flex-wrap justify-center">
+                            {projects?.map((project) => (
+                                <Project key={project.id} project={project} />
+                            ))}
                         </div>
                     </div>
                 </div>
