@@ -11,7 +11,10 @@ class MetasController extends Controller
 
     public function index()
     {
-        return Inertia::render('metas/index', []);
+        return Inertia::render('metas/index', [
+            'metas' => Metas::with('user:id,name')->latest()->get(),
+
+        ]);
     }
 
 

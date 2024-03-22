@@ -37,7 +37,7 @@ Route::resource('/categories', CategoryController::class)
 ;
 
 Route::resource('/projects', ProjectController::class)
-    ->only('index', 'store', 'update', 'delete')
+    ->only('index', 'store', 'update', 'destroy')
     ->middleware(['auth'])
 ;
 
@@ -45,7 +45,7 @@ Route::resource('/projects', ProjectController::class)
 
 
 Route::resource('/metas', MetasController::class)
-    ->only('index', 'store', 'update', 'delete')
+    ->only('index', 'store', 'update', 'destroy')
     ->middleware(['auth'])
 ;
 
@@ -53,7 +53,7 @@ Route::resource('/metas', MetasController::class)
 
 
 Route::resource('/task', TaskController::class)
-    ->only('index', 'store', 'update', 'delete')
+    ->only('index', 'store', 'update', 'destroy')
     ->middleware(['auth'])
 ;
 
