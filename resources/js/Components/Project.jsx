@@ -65,6 +65,7 @@ const Project = ({ project }) => {
                             <small className="text-sm text-gray-600"></small>
                         )}
                     </div>
+                    {project.users_id === auth.user.id && (
                     <Dropdown>
                         <Dropdown.Trigger>
                             <button>
@@ -87,6 +88,7 @@ const Project = ({ project }) => {
                             </Dropdown.Link>
                         </Dropdown.Content>
                     </Dropdown>
+                    )}
                 </div>
                 <div>
                     {editing ? (

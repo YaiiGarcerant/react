@@ -14,12 +14,18 @@ class ProjectController extends Controller
     {
 
         $categories = Category::get();
+        $projects = Project::join('categories', 'projects.categories_id', '=', 'categories.id')
+        ->join('users', 'categories.user_id', '=', 'users.id')
+        ->select('projects.*', 'users.name as users', 'users.id as users_id', 'categories.name as categoria', 'categories.id as id_categories')
+        ->latest()
+        ->get();
 
         return Inertia::render('projects/index', [
             'categories' => $categories,
-            'projects' => Project::with(['categories' => function ($query) {
-                $query->select('id', 'name as categoria');
-            }])->latest()->get(),
+            'projects' => $projects,
+            // 'projects' => Project::with(['categories' => function ($query) {
+            //     $query->select('id', 'name as categoria');
+            // }])->latest()->get(),
         ]);
     }
 
@@ -74,6 +80,8 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-
+        // $this->authorize('delete',$project);
+        $project->delete();
+        return redirect(route('projects.index'));
     }
 }
